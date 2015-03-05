@@ -124,6 +124,12 @@
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\13-plus.png" />
+    <BundleResource Include="Resources\13-plus%402x.png" />
+    <BundleResource Include="Resources\13-plus%403x.png" />
+    <BundleResource Include="Resources\19-checkmark.png" />
+    <BundleResource Include="Resources\19-checkmark%402x.png" />
+    <BundleResource Include="Resources\19-checkmark%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
