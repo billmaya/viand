@@ -6,17 +6,6 @@ namespace Viand
 {
 	public class BuyPage : ContentPage
 	{
-//		class Item
-//		{
-//			public string Name { get; set;}
-//			public bool Buy { get; set; }
-//
-//			public Item(string name, bool buy) {
-//				this.Name = name;
-//				this.Buy = buy;
-//			}
-//		}
-
 		public BuyPage()
 		{
 			Title = "Buy";
