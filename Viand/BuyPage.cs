@@ -6,31 +6,30 @@ namespace Viand
 {
 	public class BuyPage : ContentPage
 	{
+		public List<Item> buyItems;
+		public ListView buyView;
+
 		public BuyPage()
 		{
 			Title = "Buy";
 			Icon = "19-checkmark.png";
 
-			List<Item> items = new List<Item> {
-				new Item("Milk", true),
-				new Item("Eggs", true),
-				new Item("Carrots", true),
-				new Item("Raisins", false),
-				new Item("Bread", false)
-			};
+			if (Application.Current.Properties.ContainsKey("Items")) {
+				buyItems = (List<Item>)Application.Current.Properties["Items"];
+			}
 
-			ListView itemView = new ListView {
+			buyView = new ListView {
 				RowHeight = 60,
-				ItemsSource = items,
+				ItemsSource = buyItems,
 				ItemTemplate = new DataTemplate(typeof(TextCell))
 			};
 
-			itemView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
+			buyView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
 
 			Content = new StackLayout { 
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-				Children = { itemView }
+				Children = { buyView }
 			};
 		}
 	}
