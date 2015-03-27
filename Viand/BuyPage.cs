@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Viand
 {
 	public class BuyPage : ContentPage
 	{
-		public List<Item> buyItems;
+		public List<Item> allItems;
+		public IEnumerable<Item> buyItems;
 		public ListView buyView;
 
 		public BuyPage()
@@ -15,7 +17,8 @@ namespace Viand
 			Icon = "19-checkmark.png";
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
-				buyItems = (List<Item>)Application.Current.Properties["Items"];
+				allItems = (List<Item>)Application.Current.Properties["Items"];
+				buyItems = allItems.Where(item => item.Buy != false);
 			}
 
 			buyView = new ListView {

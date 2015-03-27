@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Viand
 {
 	public class AddPage : ContentPage
 	{
-		public List<Item> addItems;
+		public List<Item> allItems;
+		public IEnumerable<Item> addItems;
 		public ListView addView;
 
 		public AddPage()
@@ -16,7 +17,8 @@ namespace Viand
 			Icon = "13-plus.png";
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
-				addItems = (List<Item>)Application.Current.Properties["Items"];
+				allItems = (List<Item>)Application.Current.Properties["Items"];
+				addItems = allItems.Where(item => item.Buy != true);
 			}
 
 			addView = new ListView {
