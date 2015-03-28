@@ -16,8 +16,6 @@ namespace Viand
 			Title = "Buy";
 			Icon = "117-todo.png";
 
-			ToolbarItems.Add(new ToolbarItem("Settings", 
-
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
 				buyItems = allItems.Where(item => item.Buy != false);
