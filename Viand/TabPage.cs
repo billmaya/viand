@@ -9,6 +9,8 @@ namespace Viand
 		public TabPage()
 		{
 			Title = "Viand";
+			Children.Add(new BuyPage());
+			Children.Add(new AddPage());
 		}
 	}
 }

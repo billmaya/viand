@@ -15,9 +15,7 @@ namespace Viand
 			this.Properties["Items"] = allItems;
 
 			// The root page of your application
-			MainPage = new TabPage {
-				Children = { new BuyPage(), new AddPage() }
-			};
+			MainPage = new TabPage();
 		}
 
 		protected override void OnStart()
