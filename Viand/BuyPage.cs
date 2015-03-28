@@ -14,7 +14,9 @@ namespace Viand
 		public BuyPage()
 		{
 			Title = "Buy";
-			Icon = "19-checkmark.png";
+			Icon = "117-todo.png";
+
+			ToolbarItems.Add(new ToolbarItem("Settings", 
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
@@ -31,7 +33,6 @@ namespace Viand
 
 			Content = new StackLayout { 
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
 				Children = { buyView }
 			};
 		}

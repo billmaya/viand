@@ -130,6 +130,15 @@
     <BundleResource Include="Resources\19-checkmark.png" />
     <BundleResource Include="Resources\19-checkmark%402x.png" />
     <BundleResource Include="Resources\19-checkmark%403x.png" />
+    <BundleResource Include="Resources\106-sliders.png" />
+    <BundleResource Include="Resources\106-sliders%402x.png" />
+    <BundleResource Include="Resources\106-sliders%403x.png" />
+    <BundleResource Include="Resources\117-todo.png" />
+    <BundleResource Include="Resources\117-todo%402x.png" />
+    <BundleResource Include="Resources\117-todo%403x.png" />
+    <BundleResource Include="Resources\187-pencil.png" />
+    <BundleResource Include="Resources\187-pencil%402x.png" />
+    <BundleResource Include="Resources\187-pencil%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
