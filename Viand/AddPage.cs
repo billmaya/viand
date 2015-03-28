@@ -7,9 +7,9 @@ namespace Viand
 {
 	public class AddPage : ContentPage
 	{
-		public List<Item> allItems;
-		public IEnumerable<Item> addItems;
-		public ListView addView;
+		private List<Item> allItems;
+		private IEnumerable<Item> addItems;
+		private ListView addView;
 
 		public AddPage()
 		{

@@ -7,9 +7,9 @@ namespace Viand
 {
 	public class BuyPage : ContentPage
 	{
-		public List<Item> allItems;
-		public IEnumerable<Item> buyItems;
-		public ListView buyView;
+		private List<Item> allItems;
+		private IEnumerable<Item> buyItems;
+		private ListView buyView;
 
 		public BuyPage()
 		{
