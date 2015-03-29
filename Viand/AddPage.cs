@@ -14,7 +14,13 @@ namespace Viand
 		public AddPage()
 		{
 			Title = "Add";
-			Icon = "13-plus.png";
+			Icon = "187-pencil.png";
+
+			ToolbarItems.Add(new ToolbarItem {
+				Text = "Add",
+//				Icon = "187-pencil.png",
+				Order = ToolbarItemOrder.Default
+			});
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];

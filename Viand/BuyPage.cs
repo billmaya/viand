@@ -16,6 +16,13 @@ namespace Viand
 			Title = "Buy";
 			Icon = "117-todo.png";
 
+			ToolbarItems.Add(new ToolbarItem {
+				Text = "Settings", 
+//				Icon = "106-sliders.png",
+				Order = ToolbarItemOrder.Default,
+				Command = new Command(() => Navigation.PushAsync(new SettingsPage())) // Figure this line out
+			});
+
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
 				buyItems = allItems.Where(item => item.Buy != false);
