@@ -18,7 +18,6 @@ namespace Viand
 
 			ToolbarItems.Add(new ToolbarItem {
 				Text = "Add",
-//				Icon = "187-pencil.png",
 				Order = ToolbarItemOrder.Default
 			});
 

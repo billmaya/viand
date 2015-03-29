@@ -18,7 +18,6 @@ namespace Viand
 
 			ToolbarItems.Add(new ToolbarItem {
 				Text = "Settings", 
-//				Icon = "106-sliders.png",
 				Order = ToolbarItemOrder.Default,
 				Command = new Command(() => Navigation.PushAsync(new SettingsPage())) // Figure this line out
 			});
