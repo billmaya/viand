@@ -29,15 +29,27 @@ namespace Viand
 			addView = new ListView {
 				RowHeight = 60,
 				ItemsSource = addItems,
-				ItemTemplate = new DataTemplate(typeof(TextCell))
+				ItemTemplate = new DataTemplate(typeof(AddCell))
 			};
 
-			addView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
+			addView.ItemTemplate.SetBinding(AddCell.TextProperty, "Name");
 
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = { addView }
 			};
+		}
+	}
+
+	internal class AddCell : TextCell
+	{
+		public AddCell()
+		{
+			var buyAction = new MenuItem { Text = "Buy" };
+			var removeAction = new MenuItem { Text = "Remove", IsDestructive = true };
+
+			ContextActions.Add(removeAction);
+			ContextActions.Add(buyAction);
 		}
 	}
 }
