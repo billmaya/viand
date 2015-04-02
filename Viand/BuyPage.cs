@@ -39,6 +39,19 @@ namespace Viand
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = { buyView }
 			};
+
+			MessagingCenter.Subscribe<BuyCell>(this, "BoughtItem", ItemBought);
+			MessagingCenter.Subscribe<BuyCell>(this, "AddOne", ItemQuantityIncreased);
+		}
+
+		internal void ItemBought(BuyCell item) 
+		{
+			DisplayAlert("Alert", item.Text + " bought.", "OK");
+		}
+
+		internal void ItemQuantityIncreased(BuyCell item)
+		{
+			DisplayAlert("Alert", item.Text + " quantity increased by one", "OK");
 		}
 	}
 
@@ -47,7 +60,10 @@ namespace Viand
 		public BuyCell()
 		{
 			var boughtAction = new MenuItem { Text = "Bought", IsDestructive = true };
+			boughtAction.Clicked += (sender, e) => MessagingCenter.Send<BuyCell>(this, "BoughtItem");
+
 			var plusOneAction = new MenuItem { Text = "+1" };
+			plusOneAction.Clicked += (sender, e) => MessagingCenter.Send<BuyCell>(this, "AddOne");
 
 			ContextActions.Add(boughtAction);
 			ContextActions.Add(plusOneAction);

@@ -38,6 +38,19 @@ namespace Viand
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = { addView }
 			};
+
+			MessagingCenter.Subscribe<AddCell>(this, "BuyItem", BuyItem);
+			MessagingCenter.Subscribe<AddCell>(this, "RemoveItem", RemoveItem);
+		}
+
+		internal void BuyItem(AddCell item)
+		{
+			DisplayAlert("Alert", item.Text + " added to Buy list", "OK");
+		}
+
+		internal void RemoveItem(AddCell item)
+		{
+			DisplayAlert("Alert", item.Text + " removed from Add list", "OK");
 		}
 	}
 
@@ -46,7 +59,10 @@ namespace Viand
 		public AddCell()
 		{
 			var buyAction = new MenuItem { Text = "Buy" };
+			buyAction.Clicked += (sender, e) => MessagingCenter.Send<AddCell>(this, "BuyItem");
+
 			var removeAction = new MenuItem { Text = "Remove", IsDestructive = true };
+			removeAction.Clicked += (sender, e) => MessagingCenter.Send<AddCell>(this, "RemoveItem");
 
 			ContextActions.Add(removeAction);
 			ContextActions.Add(buyAction);
