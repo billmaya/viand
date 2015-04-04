@@ -30,6 +30,7 @@ namespace Viand
 			UpdateBuyItemsList();
 
 			buyView.ItemTemplate.SetBinding(BuyCell.TextProperty, "Name");
+			buyView.ItemTemplate.SetBinding(BuyCell.DetailProperty, "Quantity");
 
 			Content = new StackLayout { 
 				VerticalOptions = LayoutOptions.FillAndExpand,
@@ -56,7 +57,10 @@ namespace Viand
 		{
 			if (allItems != null) {
 				var obj = allItems.First(x => x.Name == item.Text);
-				if (obj != null) obj.Buy = false;
+				if (obj != null) {
+					obj.Buy = false;
+					obj.Quantity = 1;
+				}
 			}
 
 			UpdateBuyItemsList();
@@ -66,7 +70,12 @@ namespace Viand
 
 		internal void ItemQuantityIncreased(BuyCell item)
 		{
-			DisplayAlert("Alert", item.Text + " quantity increased by one", "OK");
+			if (allItems != null) {
+				var obj = allItems.First(x => x.Name == item.Text);
+				if (obj != null) obj.Quantity += 1;
+			}
+
+			UpdateBuyItemsList();
 		}
 	}
 
