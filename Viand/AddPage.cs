@@ -78,10 +78,10 @@ namespace Viand
 	{
 		public AddCell()
 		{
-			var buyAction = new MenuItem { Text = "Buy" };
+			var buyAction = new MenuItem { Text = "Buy", IsDestructive = true };
 			buyAction.Clicked += (sender, e) => MessagingCenter.Send<AddCell>(this, "BuyItem");
 
-			var removeAction = new MenuItem { Text = "Remove", IsDestructive = true };
+			var removeAction = new MenuItem { Text = "Remove" };
 			removeAction.Clicked += (sender, e) => MessagingCenter.Send<AddCell>(this, "RemoveItem");
 
 			ContextActions.Add(removeAction);
