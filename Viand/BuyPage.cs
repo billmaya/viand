@@ -39,7 +39,7 @@ namespace Viand
 
 			MessagingCenter.Subscribe<BuyCell>(this, "BoughtItem", ItemBought);
 			MessagingCenter.Subscribe<BuyCell>(this, "AddOne", ItemQuantityIncreased);
-
+			MessagingCenter.Subscribe<BuyCell>(this, "SubtractOne", ItemQuantityDecreased);
 			MessagingCenter.Subscribe<AddPage>(this, "UpdateBuyItemsList", (sender) => UpdateBuyItemsList());
 		}
 
@@ -77,6 +77,28 @@ namespace Viand
 
 			UpdateBuyItemsList();
 		}
+
+		internal void ItemQuantityDecreased(BuyCell item)
+		{
+			bool alsoUpdateAddList = false;
+
+			if (allItems != null) {
+				var obj = allItems.First(x => x.Name == item.Text);
+				if (obj != null) {
+					if (obj.Quantity != 1) {
+						obj.Quantity -= 1;
+					} else {
+						obj.Quantity = 1;
+						obj.Buy = false;
+						alsoUpdateAddList = true;
+
+					}
+				}
+			}
+
+			UpdateBuyItemsList();
+			if (alsoUpdateAddList) MessagingCenter.Send<BuyPage>(this, "UpdateAddItemsList");
+		}
 	}
 
 	internal class BuyCell : TextCell
@@ -89,8 +111,12 @@ namespace Viand
 			var plusOneAction = new MenuItem { Text = "+1" };
 			plusOneAction.Clicked += (sender, e) => MessagingCenter.Send<BuyCell>(this, "AddOne");
 
+			var minusOneAction = new MenuItem { Text = "-1" };
+			minusOneAction.Clicked += (sender, e) => MessagingCenter.Send<BuyCell>(this, "SubtractOne");
+
 			ContextActions.Add(boughtAction);
 			ContextActions.Add(plusOneAction);
+			ContextActions.Add(minusOneAction);
 		}
 	}
 }
