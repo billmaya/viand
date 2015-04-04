@@ -20,17 +20,13 @@ namespace Viand
 				Text = "Add",
 				Order = ToolbarItemOrder.Default
 			});
-
-			if (Application.Current.Properties.ContainsKey("Items")) {
-				allItems = (List<Item>)Application.Current.Properties["Items"];
-				addItems = allItems.Where(item => item.Buy != true);
-			}
-
+					
 			addView = new ListView {
 				RowHeight = 60,
-				ItemsSource = addItems,
 				ItemTemplate = new DataTemplate(typeof(AddCell))
 			};
+
+			UpdateAddItemsList();
 
 			addView.ItemTemplate.SetBinding(AddCell.TextProperty, "Name");
 
@@ -41,16 +37,40 @@ namespace Viand
 
 			MessagingCenter.Subscribe<AddCell>(this, "BuyItem", BuyItem);
 			MessagingCenter.Subscribe<AddCell>(this, "RemoveItem", RemoveItem);
+
+			MessagingCenter.Subscribe<BuyPage>(this, "UpdateAddItemsList", (sender) => UpdateAddItemsList());
+		}
+
+		internal void UpdateAddItemsList()
+		{
+			if (Application.Current.Properties.ContainsKey("Items")) {
+				allItems = (List<Item>)Application.Current.Properties["Items"];
+				addItems = allItems.Where(item => item.Buy != true);
+			}
+
+			addView.ItemsSource = addItems;
 		}
 
 		internal void BuyItem(AddCell item)
 		{
-			DisplayAlert("Alert", item.Text + " added to Buy list", "OK");
+			if (allItems != null) {
+				var obj = allItems.First(x => x.Name == item.Text);
+				if (obj != null) obj.Buy = true;
+			}
+
+			UpdateAddItemsList();
+
+			MessagingCenter.Send<AddPage>(this, "UpdateBuyItemsList");
 		}
 
 		internal void RemoveItem(AddCell item)
 		{
-			DisplayAlert("Alert", item.Text + " removed from Add list", "OK");
+			if (allItems != null) {
+				var obj = allItems.First(x => x.Name == item.Text);
+				allItems.Remove(obj);
+			}
+
+			UpdateAddItemsList();
 		}
 	}
 

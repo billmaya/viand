@@ -22,16 +22,12 @@ namespace Viand
 				Command = new Command(() => Navigation.PushAsync(new SettingsPage())) // Figure this line out
 			});
 
-			if (Application.Current.Properties.ContainsKey("Items")) {
-				allItems = (List<Item>)Application.Current.Properties["Items"];
-				buyItems = allItems.Where(item => item.Buy != false);
-			}
-
 			buyView = new ListView {
 				RowHeight = 60,
-				ItemsSource = buyItems,
 				ItemTemplate = new DataTemplate(typeof(BuyCell))
 			};
+
+			UpdateBuyItemsList();
 
 			buyView.ItemTemplate.SetBinding(BuyCell.TextProperty, "Name");
 
@@ -42,11 +38,30 @@ namespace Viand
 
 			MessagingCenter.Subscribe<BuyCell>(this, "BoughtItem", ItemBought);
 			MessagingCenter.Subscribe<BuyCell>(this, "AddOne", ItemQuantityIncreased);
+
+			MessagingCenter.Subscribe<AddPage>(this, "UpdateBuyItemsList", (sender) => UpdateBuyItemsList());
+		}
+
+		internal void UpdateBuyItemsList()
+		{
+			if (Application.Current.Properties.ContainsKey("Items")) {
+				allItems = (List<Item>)Application.Current.Properties["Items"];
+				buyItems = allItems.Where(item => item.Buy != false);
+			}
+
+			buyView.ItemsSource = buyItems;
 		}
 
 		internal void ItemBought(BuyCell item) 
 		{
-			DisplayAlert("Alert", item.Text + " bought.", "OK");
+			if (allItems != null) {
+				var obj = allItems.First(x => x.Name == item.Text);
+				if (obj != null) obj.Buy = false;
+			}
+
+			UpdateBuyItemsList();
+
+			MessagingCenter.Send<BuyPage>(this, "UpdateAddItemsList");
 		}
 
 		internal void ItemQuantityIncreased(BuyCell item)
