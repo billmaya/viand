@@ -36,7 +36,7 @@ namespace Viand
 		public List<Item> GetSampleData() {
 			return new List<Item> {
 				new Item("Milk", true),
-				new Item("Eggs", true),
+				new Item("Eggs", true, 2),
 				new Item("Carrots", true),
 				new Item("Raisins", false),
 				new Item("Bread", false),
