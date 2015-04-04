@@ -39,7 +39,29 @@ namespace Viand
 				new Item("Eggs", true),
 				new Item("Carrots", true),
 				new Item("Raisins", false),
-				new Item("Bread", false)
+				new Item("Bread", false),
+				new Item("Ice Cream", true),
+				new Item("Napkins", true),
+				new Item("Pecans", true),
+				new Item("Broccoli", true),
+				new Item("Hummus", false),
+				new Item("Ketchup", false),
+				new Item("Chocolate", false),
+				new Item("Granola", false),
+				new Item("Half and Half", false),
+				new Item("Orange Juice", true),
+				new Item("Apples", true),
+				new Item("Lettuce", true),
+				new Item("Carrots", true),
+				new Item("Walnuts", true),
+				new Item("Granola", true),
+				new Item("Tea") false),
+				new Item("American Cheese", false),
+				new Item("Bananas", false),
+				new Item("Cucumbers", false),
+				new Item("Tomato", false),
+				new Item("Peanut Butter", false),
+				new Item("Fruit Salad", false)
 			};
 		}
 	}
