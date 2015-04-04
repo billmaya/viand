@@ -55,7 +55,7 @@ namespace Viand
 				new Item("Carrots", true),
 				new Item("Walnuts", true),
 				new Item("Granola", true),
-				new Item("Tea") false),
+				new Item("Tea", false),
 				new Item("American Cheese", false),
 				new Item("Bananas", false),
 				new Item("Cucumbers", false),
