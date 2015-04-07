@@ -114,9 +114,9 @@ namespace Viand
 			var minusOneAction = new MenuItem { Text = "-1" };
 			minusOneAction.Clicked += (sender, e) => MessagingCenter.Send<BuyCell>(this, "SubtractOne");
 
-			ContextActions.Add(boughtAction);
 			ContextActions.Add(plusOneAction);
 			ContextActions.Add(minusOneAction);
+			ContextActions.Add(boughtAction);
 		}
 	}
 }
