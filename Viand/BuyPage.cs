@@ -89,8 +89,8 @@ namespace Viand
 			var plusOneAction = new MenuItem { Text = "+1" };
 			plusOneAction.Clicked += (sender, e) => MessagingCenter.Send<BuyCell>(this, "AddOne");
 
-			ContextActions.Add(boughtAction);
 			ContextActions.Add(plusOneAction);
+			ContextActions.Add(boughtAction);
 		}
 	}
 }
