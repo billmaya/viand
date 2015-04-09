@@ -13,7 +13,7 @@ namespace Viand
 			this.Name = name;
 			this.Buy = buy;
 			this.Quantity = quantity;
-			this.Label = name.Substring(0, 1);
+			this.Label = Name[0].ToString; 
 		}
 	}
 }
