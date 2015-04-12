@@ -23,7 +23,6 @@ namespace Viand
 			});
 
 			buyView = new ListView {
-				RowHeight = 60,
 				ItemTemplate = new DataTemplate(typeof(BuyCell))
 			};
 
