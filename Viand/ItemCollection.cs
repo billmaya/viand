@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace Viand
 {
-	public class ItemCollection
+	public class ItemCollection : ObservableCollection<Item>
 	{
 		public string Title { get; set; }
 
@@ -14,19 +15,18 @@ namespace Viand
 			Title = title;
 		}
 
-		public static IEnumerable<Item> GetSortedData()
+		public static IEnumerable<Item> GetSortedAddData()
 		{
 			List<Item> allItems;
-			IEnumerable<Item> addItems;
 
-			if (Application.Current.Properties.ContainsKey("Items")) {
+//			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
-				addItems = allItems.Where(item => item.Buy != true);
-			}
+				allItems.Sort();
+				AddPage.addItems = allItems.Where(item => item.Buy != true);
+//			}
 
-			addItems.OrderBy(x => x.Name);
-
-			return addItems;
+			AddPage.addItems.OrderBy(x => x.Name);
+			return AddPage.addItems;
 		}
 	}
 }

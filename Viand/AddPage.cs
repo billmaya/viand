@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace Viand
 {
 	public class AddPage : ContentPage
 	{
-		private List<Item> allItems;
-		private IEnumerable<Item> addItems;
+		internal List<Item> allItems;
+		internal static IEnumerable<Item> addItems;
 		private ListView addView;
 
 		public AddPage()
@@ -22,13 +23,13 @@ namespace Viand
 			});
 					
 			addView = new ListView {
-				RowHeight = 60,
-				ItemTemplate = new DataTemplate(typeof(AddCell))
+				ItemTemplate = new DataTemplate(typeof(AddCell)) { Bindings =  {{ AddCell.TextProperty, new Binding("Name") }}},
+				IsGroupingEnabled = true,
+				GroupDisplayBinding = new Binding("Title"),
+				GroupShortNameBinding = new Binding("Title")
 			};
-
-			UpdateAddItemsList();
-
-			addView.ItemTemplate.SetBinding(AddCell.TextProperty, "Name");
+					
+			addView.ItemsSource = UpdateAddItemsList();
 
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
@@ -37,40 +38,54 @@ namespace Viand
 
 			MessagingCenter.Subscribe<AddCell>(this, "BuyItem", BuyItem);
 			MessagingCenter.Subscribe<AddCell>(this, "RemoveItem", RemoveItem);
-
 			MessagingCenter.Subscribe<BuyPage>(this, "UpdateAddItemsList", (sender) => UpdateAddItemsList());
-		}
-
-		internal void UpdateAddItemsList()
-		{
-			if (Application.Current.Properties.ContainsKey("Items")) {
-				allItems = (List<Item>)Application.Current.Properties["Items"];
-				addItems = allItems.Where(item => item.Buy != true);
-			}
-
-			addView.ItemsSource = addItems;
 		}
 
 		internal void BuyItem(AddCell item)
 		{
-			if (allItems != null) {
+			if (Application.Current.Properties.ContainsKey("Items")) {
+				allItems = (List<Item>)Application.Current.Properties["Items"];
 				var obj = allItems.First(x => x.Name == item.Text);
 				if (obj != null) obj.Buy = true;
 			}
-
-			UpdateAddItemsList();
-
+				
+			addView.ItemsSource = UpdateAddItemsList();
 			MessagingCenter.Send<AddPage>(this, "UpdateBuyItemsList");
 		}
 
 		internal void RemoveItem(AddCell item)
 		{
-			if (allItems != null) {
+			if (Application.Current.Properties.ContainsKey("Items")) {
+				allItems = (List<Item>)Application.Current.Properties["Items"];
 				var obj = allItems.First(x => x.Name == item.Text);
 				allItems.Remove(obj);
 			}
 
-			UpdateAddItemsList();
+			addView.ItemsSource = UpdateAddItemsList();
+		}
+
+		ObservableCollection<ItemCollection> UpdateAddItemsList()
+		{
+			var allAddItemGroups = new ObservableCollection<ItemCollection>();
+
+			foreach (Item item in ItemCollection.GetSortedAddData())
+			{
+				// Attempt to find any existing groups where theg group title matches the first char of our ListItem's name.
+				var addItemGroup = allAddItemGroups.FirstOrDefault(g => g.Title == item.Label);
+
+				// If the list group does not exist, we create it.
+				if (addItemGroup == null)
+				{
+					addItemGroup = new ItemCollection(item.Label);
+					addItemGroup.Add(item);
+					allAddItemGroups.Add(addItemGroup);
+				}
+				else
+				{ // If the group does exist, we simply add the demo to the existing group.
+					addItemGroup.Add(item);
+				}
+			}
+			return allAddItemGroups;
 		}
 	}
 
