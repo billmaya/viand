@@ -19,13 +19,12 @@ namespace Viand
 		{
 			List<Item> allItems;
 
-//			if (Application.Current.Properties.ContainsKey("Items")) {
+			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
 				allItems.Sort();
 				AddPage.addItems = allItems.Where(item => item.Buy != true);
-//			}
+			}
 
-			AddPage.addItems.OrderBy(x => x.Name);
 			return AddPage.addItems;
 		}
 	}

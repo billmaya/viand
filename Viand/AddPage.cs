@@ -64,16 +64,14 @@ namespace Viand
 			addView.ItemsSource = UpdateAddItemsList();
 		}
 
-		ObservableCollection<ItemCollection> UpdateAddItemsList()
+		internal ObservableCollection<ItemCollection> UpdateAddItemsList()
 		{
 			var allAddItemGroups = new ObservableCollection<ItemCollection>();
 
 			foreach (Item item in ItemCollection.GetSortedAddData())
 			{
-				// Attempt to find any existing groups where theg group title matches the first char of our ListItem's name.
 				var addItemGroup = allAddItemGroups.FirstOrDefault(g => g.Title == item.Label);
 
-				// If the list group does not exist, we create it.
 				if (addItemGroup == null)
 				{
 					addItemGroup = new ItemCollection(item.Label);
@@ -81,7 +79,7 @@ namespace Viand
 					allAddItemGroups.Add(addItemGroup);
 				}
 				else
-				{ // If the group does exist, we simply add the demo to the existing group.
+				{
 					addItemGroup.Add(item);
 				}
 			}
