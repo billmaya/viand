@@ -38,7 +38,7 @@ namespace Viand
 
 			MessagingCenter.Subscribe<AddCell>(this, "BuyItem", BuyItem);
 			MessagingCenter.Subscribe<AddCell>(this, "RemoveItem", RemoveItem);
-			MessagingCenter.Subscribe<BuyPage>(this, "UpdateAddItemsList", (sender) => UpdateAddItemsList());
+			MessagingCenter.Subscribe<BuyPage>(this, "UpdateAddItemsListFromBuyList", (sender) => UpdateAddItemsListFromBuyList());
 		}
 
 		internal void BuyItem(AddCell item)
@@ -84,6 +84,11 @@ namespace Viand
 				}
 			}
 			return allAddItemGroups;
+		}
+
+		internal void UpdateAddItemsListFromBuyList()
+		{
+			addView.ItemsSource = UpdateAddItemsList();
 		}
 	}
 
