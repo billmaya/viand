@@ -8,7 +8,7 @@ namespace Viand
 	{
 		public TabPage()
 		{
-			Title = "Viand";
+//			Title = "Viand";
 			Children.Add(new BuyPage());
 			Children.Add(new AddPage());
 		}
