@@ -18,7 +18,7 @@ namespace Viand
 			Icon = "187-pencil.png";
 
 			ToolbarItems.Add(new ToolbarItem {
-				Text = "Add",
+				Text = "Add Item",
 				Order = ToolbarItemOrder.Default,
 				Command = new Command(() => Navigation.PushAsync(new AddItemPage()))
 			});
