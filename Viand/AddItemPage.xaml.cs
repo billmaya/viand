@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace Viand
 {
-	public partial class AddItem : ContentPage
+	public partial class AddItemPage : ContentPage
 	{
-		public AddItem()
+		public AddItemPage()
 		{
 			InitializeComponent();
 		}

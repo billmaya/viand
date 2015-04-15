@@ -19,7 +19,8 @@ namespace Viand
 
 			ToolbarItems.Add(new ToolbarItem {
 				Text = "Add",
-				Order = ToolbarItemOrder.Default
+				Order = ToolbarItemOrder.Default,
+				Command = new Command(() => Navigation.PushAsync(new AddItemPage()))
 			});
 					
 			addView = new ListView {

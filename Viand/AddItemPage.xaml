@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Viand.AddItem">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Viand.AddItemPage"
+	Title="Add Item">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="Save" />
+	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-	<Label Text="Hello, XAML!"
-         VerticalOptions="Start"
-         XAlign="Center"
-         Rotation="-15"
-         IsVisible="true"
-         FontSize="Large"
-         FontAttributes="Bold"
-         TextColor="Aqua" />
+		<StackLayout Orientation="Vertical">
+			<Entry></Entry>
+			<StackLayout Orientation="Horizontal">
+				<Label>Save to Add list</Label>
+				<Switch IsToggled="true"></Switch>
+			</StackLayout>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
