@@ -38,7 +38,6 @@ namespace Viand
 
 			MessagingCenter.Subscribe<BuyCell>(this, "BoughtItem", ItemBought);
 			MessagingCenter.Subscribe<BuyCell>(this, "AddOne", ItemQuantityIncreased);
-
 			MessagingCenter.Subscribe<AddPage>(this, "UpdateBuyItemsList", (sender) => UpdateBuyItemsList());
 		}
 
@@ -46,6 +45,7 @@ namespace Viand
 		{
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
+				allItems.Sort();
 				buyItems = allItems.Where(item => item.Buy != false);
 			}
 
@@ -63,8 +63,7 @@ namespace Viand
 			}
 
 			UpdateBuyItemsList();
-
-			MessagingCenter.Send<BuyPage>(this, "UpdateAddItemsList");
+			MessagingCenter.Send<BuyPage>(this, "UpdateAddItemsListFromBuyList");
 		}
 
 		internal void ItemQuantityIncreased(BuyCell item)
