@@ -2,20 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Viand.AddItemPage"
 	Title="Add Item">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="Save" />
+		<ToolbarItem Name="Save"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout Orientation="Vertical"
 			Padding="20,20,20,0"
 			Spacing="15">
-			<Entry Placeholder="Type your new item here" />
+			<Entry Placeholder="Type your new item here"/>
 			<StackLayout Orientation="Horizontal"
 				HorizontalOptions="Center"
 				VerticalOptions="Center">
-				<Label x:Name="switchLabel">
+				<Label x:Name="destinationLabel">
 					Save to Add list
 				</Label>
-				<Switch IsToggled="true" />
+				<Switch x:Name="destinationSwitch"
+					IsToggled="true" 
+					Toggled="OnDestinationSwitchToggled"/>
 			</StackLayout>
 		</StackLayout>
 	</ContentPage.Content>
