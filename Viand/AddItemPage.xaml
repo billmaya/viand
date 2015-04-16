@@ -5,11 +5,17 @@
 		<ToolbarItem Name="Save" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<StackLayout Orientation="Vertical">
-			<Entry></Entry>
-			<StackLayout Orientation="Horizontal">
-				<Label>Save to Add list</Label>
-				<Switch IsToggled="true"></Switch>
+		<StackLayout Orientation="Vertical"
+			Padding="20,20,20,0"
+			Spacing="15">
+			<Entry Placeholder="Type your new item here" />
+			<StackLayout Orientation="Horizontal"
+				HorizontalOptions="Center"
+				VerticalOptions="Center">
+				<Label x:Name="switchLabel">
+					Save to Add list
+				</Label>
+				<Switch IsToggled="true" />
 			</StackLayout>
 		</StackLayout>
 	</ContentPage.Content>
