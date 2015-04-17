@@ -12,7 +12,7 @@
 			<StackLayout Orientation="Horizontal"
 				HorizontalOptions="Center"
 				VerticalOptions="Center">
-				<Label x:Name="destinationLabel">
+				<Label x:Name="destinationLabel" VerticalOptions="Center">
 					Save to Add list
 				</Label>
 				<Switch x:Name="destinationSwitch"
