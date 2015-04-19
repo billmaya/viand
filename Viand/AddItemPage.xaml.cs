@@ -7,6 +7,7 @@ namespace Viand
 {
 	public partial class AddItemPage : ContentPage
 	{
+		private List<Item> allItems;
 		private bool addToBuyList;
 
 		public AddItemPage()
@@ -27,14 +28,30 @@ namespace Viand
 
 		void OnSaveClicked(object sender, EventArgs args)
 		{
-			if (Application.Current.Properties.ContainsKey("Items")) {
-				List<Item> allItems = (List<Item>)Application.Current.Properties["Items"];
-				allItems.Add(new Item(itemEntry.Text, addToBuyList));
-				itemEntry.Text = "";
-			}
+			bool itemAlreadyExists = false;
 
-			if (!addToBuyList) MessagingCenter.Send<AddItemPage>(this, "UpdateAddItemsListFromAddItems");
-			else MessagingCenter.Send<AddItemPage>(this, "UpdateBuyItemsListFromAddItems");
+			if (Application.Current.Properties.ContainsKey("Items")) {
+				allItems = (List<Item>)Application.Current.Properties["Items"];
+
+				Item newItem = new Item(itemEntry.Text, addToBuyList);
+				itemAlreadyExists = CheckListForExistingItem(newItem);
+
+				if (itemAlreadyExists) {
+					DisplayAlert("Duplicate Item", "This item already exists in one of your lists.", "OK");
+				} else {
+					allItems.Add(newItem);
+					itemEntry.Text = "";
+			
+					if (!addToBuyList) MessagingCenter.Send<AddItemPage>(this, "UpdateAddItemsListFromAddItems");
+					else MessagingCenter.Send<AddItemPage>(this, "UpdateBuyItemsListFromAddItems");
+				}
+			}
+		}
+
+		private bool CheckListForExistingItem(Item item)
+		{
+			if (allItems.BinarySearch(item) >= 0) return true;
+			else return false;
 		}
 	}
 }
