@@ -3,14 +3,15 @@
 	Title="Add Item">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem x:Name="saveItem"
-			Name="Save"/>
+			Name="Save"
+			Clicked="OnSaveClicked"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout Orientation="Vertical"
 			Padding="20,20,20,0"
 			Spacing="15">
 			<Entry x:Name="itemEntry" 
-				Placeholder="Type your new item here"/>
+				Placeholder="Tap here to add a new item"/>
 			<StackLayout Orientation="Horizontal"
 				HorizontalOptions="Center"
 				VerticalOptions="Center">

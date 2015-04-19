@@ -39,6 +39,7 @@ namespace Viand
 			MessagingCenter.Subscribe<BuyCell>(this, "BoughtItem", ItemBought);
 			MessagingCenter.Subscribe<BuyCell>(this, "AddOne", ItemQuantityIncreased);
 			MessagingCenter.Subscribe<AddPage>(this, "UpdateBuyItemsList", (sender) => UpdateBuyItemsList());
+			MessagingCenter.Subscribe<AddItemPage>(this, "UpdateBuyItemsListFromAddItems", (sender) => UpdateBuyItemsList());
 		}
 
 		internal void UpdateBuyItemsList()
