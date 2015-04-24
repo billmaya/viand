@@ -11,7 +11,18 @@ namespace Viand
 		public ItemDatabase()
 		{
 			database = DependencyService.Get<ISQLite>().GetConnection();
-			database.CreateTable<Item>();
+
+			if (ItemTableDoesNotExist) {
+				database.CreateTable<Item>();
+			}
+				
+		}
+
+		public bool ItemTableDoesNotExist()
+		{
+			int exists = 0;
+
+			exists = database.Query("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='Item'");
 		}
 	}
 
