@@ -1,9 +1,13 @@
 ﻿using System;
+using SQLite.Net.Attributes;
 
 namespace Viand
 {
 	public class Item : IComparable<Item>
 	{
+		[PrimaryKey, AutoIncrement]
+		public int ID { get; set; }
+
 		public string Name { get; private set; }
 		public bool Buy { get; set; }
 		public int Quantity { get; set; }
