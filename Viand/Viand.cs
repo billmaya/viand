@@ -7,11 +7,12 @@ namespace Viand
 {
 	public class App : Application
 	{
+		public static ItemDatabase database;
 		public List<Item> allItems;
 
 		public App()
 		{
-			allItems = GetSampleData();
+			allItems = (List<Item>)Database.GetItems();
 			this.Properties["Items"] = allItems;
 
 			// The root page of your application
@@ -31,6 +32,14 @@ namespace Viand
 		protected override void OnResume()
 		{
 			// Handle when your app resumes
+		}
+
+		public static ItemDatabase Database
+		{
+			get {
+				if (database == null) database = new ItemDatabase();
+				return database;
+			}
 		}
 
 		public List<Item> GetSampleData() {

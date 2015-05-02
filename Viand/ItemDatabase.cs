@@ -1,6 +1,8 @@
 ﻿using System;
 using SQLite.Net;
 using Xamarin.Forms;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Viand
 {
@@ -11,24 +13,19 @@ namespace Viand
 		public ItemDatabase()
 		{
 			database = DependencyService.Get<ISQLite>().GetConnection();
-
-			if (ItemTableDoesNotExist) {
-				database.CreateTable<Item>();
-			}
-				
 		}
 
-		public bool ItemTableDoesNotExist()
+		public IEnumerable<Item> GetItems()
 		{
-			int exists = 0;
-
-			exists = database.Query("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='Item'");
+			return (from i in database.Table<Item>() select i).ToList();
 		}
+			
 	}
 
 	public interface ISQLite
 	{
 		SQLiteConnection GetConnection();
 	}
+
 }
 
