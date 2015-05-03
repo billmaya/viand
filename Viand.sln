@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viand", "Viand\Viand.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viand.iOS", "iOS\Viand.iOS.csproj", "{05C0D587-38C4-4735-A130-8561CABAA1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viand", "Droid\Viand.csproj", "{DBDE06B6-BF4D-4B48-B6BE-89E74E741E53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viand.Droid", "Droid\Viand.Droid.csproj", "{DBDE06B6-BF4D-4B48-B6BE-89E74E741E53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

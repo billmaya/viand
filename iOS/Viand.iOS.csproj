@@ -115,9 +115,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Viand\Viand.csproj">
-      <Project>{90E10A6F-7FF7-4923-979F-C14B8213C1AB}</Project>
-      <Name>Viand</Name>
+    <ProjectReference Include="..\Droid\Viand.Droid.csproj">
+      <Project>{DBDE06B6-BF4D-4B48-B6BE-89E74E741E53}</Project>
+      <Name>Viand.Droid</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
