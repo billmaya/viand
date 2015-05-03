@@ -15,9 +15,7 @@
 			<StackLayout Orientation="Horizontal"
 				HorizontalOptions="Center"
 				VerticalOptions="Center">
-				<Label x:Name="destinationLabel" VerticalOptions="Center">
-					Save to Add list
-				</Label>
+				<Label x:Name="destinationLabel" VerticalOptions="Center" Text="Save to Add list"/>
 				<Switch x:Name="destinationSwitch"
 					IsToggled="true" 
 					Toggled="OnDestinationSwitchToggled"/>
