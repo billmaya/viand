@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
 
 namespace Viand
@@ -41,6 +40,8 @@ namespace Viand
 				} else {
 					allItems.Add(newItem);
 					itemEntry.Text = "";
+
+					App.Database.AddItem(newItem);
 			
 					if (!addToBuyList) MessagingCenter.Send<AddItemPage>(this, "UpdateAddItemsListFromAddItems");
 					else MessagingCenter.Send<AddItemPage>(this, "UpdateBuyItemsListFromAddItems");

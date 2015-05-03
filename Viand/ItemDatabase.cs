@@ -19,6 +19,16 @@ namespace Viand
 		{
 			return (from i in database.Table<Item>() select i).ToList();
 		}
+
+		public void AddItem(Item item)
+		{
+			database.Insert(item);
+		}
+
+		public void RemoveItem(Item item)
+		{
+			database.Delete<Item>(item.ID);
+		}
 			
 	}
 

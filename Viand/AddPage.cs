@@ -57,11 +57,15 @@ namespace Viand
 
 		internal void RemoveItem(AddCell item)
 		{
+			Item itemToRemove = null;
+
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
-				var obj = allItems.First(x => x.Name == item.Text);
-				allItems.Remove(obj);
+				itemToRemove = allItems.First(x => x.Name == item.Text);
+				allItems.Remove(itemToRemove);
 			}
+				
+			App.Database.RemoveItem(itemToRemove);
 
 			addView.ItemsSource = UpdateAddItemsList();
 		}
