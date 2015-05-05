@@ -27,11 +27,13 @@ namespace Viand
 
 		void OnSaveClicked(object sender, EventArgs args)
 		{
+			itemEntry.Text = itemEntry.Text.Trim();
+			if (NotValidItem(itemEntry.Text)) return;
+
 			bool itemAlreadyExists = false;
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
-
 				Item newItem = new Item(itemEntry.Text, addToBuyList);
 				itemAlreadyExists = CheckListForExistingItem(newItem);
 
@@ -52,6 +54,12 @@ namespace Viand
 		private bool CheckListForExistingItem(Item item)
 		{
 			if (allItems.BinarySearch(item) >= 0) return true;
+			else return false;
+		}
+
+		private bool NotValidItem(string item)
+		{
+			if (String.IsNullOrEmpty(item) || item.Length == 0) return true;
 			else return false;
 		}
 	}
