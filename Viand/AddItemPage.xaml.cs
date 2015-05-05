@@ -60,6 +60,8 @@ namespace Viand
 
 		private string TrimAndCapitalize(string name)
 		{
+			if (String.IsNullOrWhiteSpace(name)) return String.Empty;
+
 			name = name.Trim(); // Remove any leading and trailing spaces
 
 			name = Char.ToUpper(name[0]) + name.Substring(1); // Capitalize first letter
@@ -76,7 +78,10 @@ namespace Viand
 
 		private bool NotValidItem(string name)
 		{
-			if (String.IsNullOrEmpty(name) || name.Length == 0) return true;
+			if (String.IsNullOrEmpty(name) || name.Length == 0) {
+				DisplayAlert("Invalid Item Name", "Only valid item names can be added to the list.", "OK");
+				return true;
+			}
 			else return false;
 		}
 	}
