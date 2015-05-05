@@ -27,7 +27,8 @@ namespace Viand
 
 		void OnSaveClicked(object sender, EventArgs args)
 		{
-			string itemName = itemEntry.Text.Trim();
+			string itemName = TrimAndCapitalize(itemEntry.Text);
+
 			if (NotValidItem(itemName)) return;
 
 			bool itemAlreadyExists = false;
@@ -57,9 +58,18 @@ namespace Viand
 			else return false;
 		}
 
-		private bool NotValidItem(string item)
+		private string TrimAndCapitalize(string name)
 		{
-			if (String.IsNullOrEmpty(item) || item.Length == 0) return true;
+			name = name.Trim();
+
+			name = Char.ToUpper(name[0]) + name.Substring(1);
+
+			return name;
+		}
+
+		private bool NotValidItem(string name)
+		{
+			if (String.IsNullOrEmpty(name) || name.Length == 0) return true;
 			else return false;
 		}
 	}
