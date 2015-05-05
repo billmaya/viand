@@ -27,14 +27,14 @@ namespace Viand
 
 		void OnSaveClicked(object sender, EventArgs args)
 		{
-			itemEntry.Text = itemEntry.Text.Trim();
-			if (NotValidItem(itemEntry.Text)) return;
+			string itemName = itemEntry.Text.Trim();
+			if (NotValidItem(itemName)) return;
 
 			bool itemAlreadyExists = false;
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
-				Item newItem = new Item(itemEntry.Text, addToBuyList);
+				Item newItem = new Item(itemName, addToBuyList);
 				itemAlreadyExists = CheckListForExistingItem(newItem);
 
 				if (itemAlreadyExists) {
