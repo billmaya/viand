@@ -60,9 +60,16 @@ namespace Viand
 
 		private string TrimAndCapitalize(string name)
 		{
-			name = name.Trim();
+			name = name.Trim(); // Remove any leading and trailing spaces
 
-			name = Char.ToUpper(name[0]) + name.Substring(1);
+			name = Char.ToUpper(name[0]) + name.Substring(1); // Capitalize first letter
+
+			// Capitalize any other letter preceded by a space
+			for (int i = 1; i < name.Length; i++) {
+				if (Char.IsWhiteSpace(name[i - 1])) {
+					name = name.Substring(0, i) + Char.ToUpper(name[i]) + name.Substring(i + 1);
+				}
+			}
 
 			return name;
 		}
