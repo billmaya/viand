@@ -11,7 +11,7 @@
 			Padding="20,20,20,0"
 			Spacing="15">
 			<Entry x:Name="itemEntry" 
-				Placeholder="Tap here to add a new item"/>
+				Placeholder="Type a new item here"/>
 			<StackLayout Orientation="Horizontal"
 				HorizontalOptions="Center"
 				VerticalOptions="Center">
@@ -19,6 +19,15 @@
 				<Switch x:Name="destinationSwitch"
 					IsToggled="true" 
 					Toggled="OnDestinationSwitchToggled"/>
+			</StackLayout>
+			<StackLayout x:Name="quantityControl" Orientation="Horizontal"
+				HorizontalOptions="Center" VerticalOptions="Center"
+				IsVisible="false">
+					<Label x:Name="currentQuantity" VerticalOptions="Center"
+						BindingContext="{x:Reference Name=quantitySlider}"
+						Text="{Binding Path=Value, StringFormat='{0:F0}'}"/>
+					<Label x:Name="quantityLabel" VerticalOptions="Center" Text="Quantity"/>
+					<Slider x:Name="quantitySlider" Maximum="4" Minimum="1"/>
 			</StackLayout>
 		</StackLayout>
 	</ContentPage.Content>

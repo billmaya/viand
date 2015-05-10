@@ -18,9 +18,11 @@ namespace Viand
 		{
 			if (destinationSwitch.IsToggled == true) {
 				destinationLabel.Text = "Save to Add list";
+				quantityControl.IsVisible = false;
 				addToBuyList = false;
 			} else {
 				destinationLabel.Text = "Save to Buy list";
+				quantityControl.IsVisible = true;
 				addToBuyList = true;
 			}
 		}
@@ -35,7 +37,7 @@ namespace Viand
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
-				Item newItem = new Item(itemName, addToBuyList);
+				Item newItem = new Item(itemName, addToBuyList, (int)quantitySlider.Value);
 				itemAlreadyExists = CheckListForExistingItem(newItem);
 
 				if (itemAlreadyExists) {
@@ -43,6 +45,7 @@ namespace Viand
 				} else {
 					allItems.Add(newItem);
 					itemEntry.Text = "";
+					quantitySlider.Value = 1;
 
 					App.Database.AddItem(newItem);
 			
