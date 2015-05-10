@@ -16,11 +16,11 @@ namespace Viand
 			Title = "Buy";
 			Icon = "117-todo.png";
 
-			ToolbarItems.Add(new ToolbarItem {
-				Text = "Settings", 
-				Order = ToolbarItemOrder.Default,
-				Command = new Command(() => Navigation.PushAsync(new SettingsPage())) // Figure this line out
-			});
+//			ToolbarItems.Add(new ToolbarItem {
+//				Text = "Settings", 
+//				Order = ToolbarItemOrder.Default,
+//				Command = new Command(() => Navigation.PushAsync(new SettingsPage())) // Figure this line out
+//			});
 
 			buyView = new ListView {
 				ItemTemplate = new DataTemplate(typeof(BuyCell))
