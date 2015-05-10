@@ -15,14 +15,15 @@
 			<StackLayout Orientation="Horizontal"
 				HorizontalOptions="Center"
 				VerticalOptions="Center">
-				<Label x:Name="destinationLabel" VerticalOptions="Center" Text="Save to Add list"/>
+				<Label x:Name="destinationAddLabel" VerticalOptions="Center" Text="Save to Add list"/>
 				<Switch x:Name="destinationSwitch"
 					IsToggled="true" 
 					Toggled="OnDestinationSwitchToggled"/>
+				<Label x:Name="destinationBuyLabel" VerticalOptions="Center" Text="Buy list"/>
 			</StackLayout>
 			<StackLayout x:Name="quantityControl" Orientation="Horizontal"
 				HorizontalOptions="Center" VerticalOptions="Center"
-				IsVisible="false">
+				IsVisible="true">
 					<Label x:Name="quantityLabel" VerticalOptions="Center" 
 						BindingContext="{x:Reference Name=quantitySlider}"
 						Text="{Binding Path=Value, StringFormat='{0:F0} Quantity'}"/>

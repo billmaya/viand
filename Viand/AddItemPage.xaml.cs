@@ -7,7 +7,7 @@ namespace Viand
 	public partial class AddItemPage : ContentPage
 	{
 		private List<Item> allItems;
-		private bool addToBuyList;
+		private bool addToBuyList = true;
 
 		public AddItemPage()
 		{
@@ -16,12 +16,10 @@ namespace Viand
 
 		void OnDestinationSwitchToggled(object sender, EventArgs args)
 		{
-			if (destinationSwitch.IsToggled == true) {
-				destinationLabel.Text = "Save to Add list";
+			if (destinationSwitch.IsToggled != true) {
 				quantityControl.IsVisible = false;
 				addToBuyList = false;
 			} else {
-				destinationLabel.Text = "Save to Buy list";
 				quantityControl.IsVisible = true;
 				addToBuyList = true;
 			}
