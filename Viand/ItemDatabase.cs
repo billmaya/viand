@@ -29,7 +29,11 @@ namespace Viand
 		{
 			database.Delete<Item>(item.ID);
 		}
-			
+
+		public void UpdateItem(Item item)
+		{
+			database.Update(item);
+		}
 	}
 
 	public interface ISQLite

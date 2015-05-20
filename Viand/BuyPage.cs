@@ -61,6 +61,7 @@ namespace Viand
 					obj.Buy = false;
 					obj.Quantity = 1;
 				}
+				App.Database.UpdateItem((Item)obj);
 			}
 
 			UpdateBuyItemsList();

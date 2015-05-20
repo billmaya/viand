@@ -49,6 +49,8 @@ namespace Viand
 				allItems = (List<Item>)Application.Current.Properties["Items"];
 				var obj = allItems.First(x => x.Name == item.Text);
 				if (obj != null) obj.Buy = true;
+
+				App.Database.UpdateItem((Item)obj);
 			}
 				
 			addView.ItemsSource = UpdateAddItemsList();
