@@ -26,7 +26,7 @@
 				IsVisible="true">
 					<Label x:Name="quantityLabel" VerticalOptions="Center" 
 						BindingContext="{x:Reference Name=quantitySlider}"
-						Text="{Binding Path=Value, StringFormat='{0:F0} Quantity'}"/>
+						Text="{Binding Path=Value, StringFormat='{0:#} Quantity'}"/>
 					<Slider x:Name="quantitySlider" Maximum="4" Minimum="1"/>
 			</StackLayout>
 		</StackLayout>

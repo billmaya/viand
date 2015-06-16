@@ -35,7 +35,9 @@ namespace Viand
 
 			if (Application.Current.Properties.ContainsKey("Items")) {
 				allItems = (List<Item>)Application.Current.Properties["Items"];
-				Item newItem = new Item(itemName, addToBuyList, (int)quantitySlider.Value);
+
+				int quantityRoundedUp = (int)Math.Round(quantitySlider.Value);
+				Item newItem = new Item(itemName, addToBuyList, quantityRoundedUp);
 				itemAlreadyExists = CheckListForExistingItem(newItem);
 
 				if (itemAlreadyExists) {
