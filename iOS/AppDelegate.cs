@@ -5,6 +5,8 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
+using Microsoft.WindowsAzure.MobileServices;
+
 namespace Viand.iOS
 {
 	[Register("AppDelegate")]
@@ -18,6 +20,10 @@ namespace Viand.iOS
 
 			return base.FinishedLaunching(app, options);
 		}
+
+		public static MobileServiceClient MobileService = new MobileServiceClient(
+			"https://viand.azure-mobile.net",
+			"kOTRftIGtybaMmFGuOBtYuKITYvzZW70");
 	}
 }
 
