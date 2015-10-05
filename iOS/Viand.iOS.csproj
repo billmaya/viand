@@ -119,21 +119,6 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
-      <HintPath>..\Components\azure-mobile-services-1.3.1\lib\ios-unified\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile">
-      <HintPath>..\Components\azure-mobile-services-1.3.1\lib\ios-unified\Microsoft.WindowsAzure.Mobile.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\azure-mobile-services-1.3.1\lib\ios-unified\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\Components\azure-mobile-services-1.3.1\lib\ios-unified\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\Components\azure-mobile-services-1.3.1\lib\ios-unified\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default.png" />
@@ -194,11 +179,5 @@
       <Project>{90E10A6F-7FF7-4923-979F-C14B8213C1AB}</Project>
       <Name>Viand</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="azure-mobile-services">
-      <Version>1.3.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
   </ItemGroup>
 </Project>
