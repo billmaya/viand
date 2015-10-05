@@ -20,10 +20,6 @@ namespace Viand.iOS
 
 			return base.FinishedLaunching(app, options);
 		}
-
-		public static MobileServiceClient MobileService = new MobileServiceClient(
-			"https://viand.azure-mobile.net",
-			"kOTRftIGtybaMmFGuOBtYuKITYvzZW70");
 	}
 }
 
