@@ -29,6 +29,9 @@ namespace Viand
 				GroupDisplayBinding = new Binding("Title"),
 				GroupShortNameBinding = new Binding("Title")
 			};
+
+			addView.IsPullToRefreshEnabled = true;
+			addView.Refreshing += (object sender, EventArgs e) => Device.StartTimer(TimeSpan.FromSeconds(5), SyncItems);
 					
 			addView.ItemsSource = UpdateAddItemsList();
 
@@ -102,6 +105,14 @@ namespace Viand
 		internal void UpdateAddItemsListFromAddItems()
 		{
 			addView.ItemsSource = UpdateAddItemsList();
+		}
+
+		internal bool SyncItems()
+		{
+			App.Database.SyncItems();
+			addView.IsRefreshing = false;
+
+			return false;
 		}
 	}
 

@@ -31,6 +31,9 @@ namespace Viand
 			buyView.ItemTemplate.SetBinding(BuyCell.TextProperty, "Name");
 			buyView.ItemTemplate.SetBinding(BuyCell.DetailProperty, "Quantity");
 
+			buyView.IsPullToRefreshEnabled = true;
+			buyView.Refreshing += (object sender, EventArgs e) => Device.StartTimer(TimeSpan.FromSeconds(5), SyncItems);
+
 			Content = new StackLayout { 
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = { buyView }
@@ -77,6 +80,14 @@ namespace Viand
 
 			UpdateBuyItemsList();
 		}
+
+		internal bool SyncItems()
+		{
+			App.Database.SyncItems();
+			buyView.IsRefreshing = false;
+
+			return false;
+		}
 	}
 
 	internal class BuyCell : TextCell
@@ -93,6 +104,7 @@ namespace Viand
 			ContextActions.Add(boughtAction);
 		}
 	}
+
 }
 
 

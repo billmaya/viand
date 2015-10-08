@@ -5,6 +5,8 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
+using Microsoft.WindowsAzure.MobileServices;
+
 namespace Viand.iOS
 {
 	[Register("AppDelegate")]
@@ -13,6 +15,9 @@ namespace Viand.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
+
+			CurrentPlatform.Init();
+			SQLitePCL.CurrentPlatform.Init();
 
 			LoadApplication(new App());
 

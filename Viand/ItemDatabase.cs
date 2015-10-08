@@ -34,6 +34,11 @@ namespace Viand
 		{
 			database.Update(item);
 		}
+
+		public void SyncItems()
+		{
+			// Sync code here
+		}
 	}
 
 	public interface ISQLite
