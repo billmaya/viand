@@ -20,6 +20,9 @@ namespace Viand
 		[Column("Label")]
 		public string Label { get; private set; }
 
+		[Column("Misc")]
+		public string Misc { get; set; }
+
 		public Item() {}
 
 		public Item(string name, bool buy, int quantity = 1 ) 
