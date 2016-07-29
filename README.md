@@ -6,6 +6,7 @@ This README would normally document whatever steps are necessary to get your app
 
 * This is the Android/iPhone app that I'm currently working on (it's a grocery management list for my family)
 * Currently uses SQLite for local storage, I'm in the process of adding syncing between app instances using Microsoft Azure
+* You can see development history so far at http://objectiveme.com/tag/viand/
 
 ### How do I get set up? ###
 
