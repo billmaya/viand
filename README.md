@@ -11,5 +11,5 @@ This README would normally document whatever steps are necessary to get your app
 
 * It's written in C# .NET using Xamarin.Forms.
 * You'll have to download Xamarin Studio to run the code - https://www.xamarin.com/platform
-* To run open the Viand/Viand.sln
+* To run open the Viand/Viand.sln file
 * Currently runs in Android & iOS simulators and actual devices.
